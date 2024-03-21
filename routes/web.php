@@ -13,6 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+/*Route::get('/', function () {
+    return '<h1>Hello, World!</h1>';
+});*/
+
+/*Route::get('/', function () {
+    $res = 2 + 3;
+    $name = 'John';
+    return view('home')->with('var', $res);
+});*/
+
+/*Route::get('/', function () {
+    $res = 2 + 3;
+    $name = 'John';
+    return view('home', ['var' => $res, 'name' => $name]);
+});*/
+
+Route::get('/', function () {
+    $res = 2 + 3;
+    $name = 'John';
+    return view('home', compact('res', 'name'));
+});
+
+Route::get('/about', function () {
+    return '<h1>About Page</h1>';
 });
