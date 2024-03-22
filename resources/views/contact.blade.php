@@ -27,6 +27,8 @@
 
         <form action="{{ route('contact') }}" method="post">
             {{-- csrf_field() --}}
+            {{-- method_field('PUT') --}}
+            @method('PUT')
             @csrf
             <input type="text" name="name">
             <input type="email" name="email">
