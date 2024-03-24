@@ -19,6 +19,10 @@ Route::get('/test', 'HomeController@test');
 Route::get('/test2', 'Test\TestController@index');
 Route::get('/page/{slug}', 'PageController@show');
 
+Route::resource('/admin/posts', 'PostController', ['parameters' => [
+    'posts' => 'slug',
+]]);
+
 
 /* redirecting a non-existent address to a specific page (instead of a 404 page) */
 Route::fallback(function () {
