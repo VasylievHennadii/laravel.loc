@@ -9,32 +9,23 @@ class HomeController extends Controller
 
     public function index()
     {
-//        DB::insert("INSERT INTO posts (title, content) VALUES (?, ?)", ['Статья 5', 'Lorem ipsum 5...']);
-//        DB::insert("INSERT INTO posts (title, content) VALUES (:title, :content)", ['content' => 'Lorem ipsum 5...', 'title' => 'Статья 5']);
+//        $data = DB::table('country')->get();
+//        $data = DB::table('country')->limit(5)->get();
+//        $data = DB::table('country')->select('Code', 'Name')->limit(5)->get();
+//        $data = DB::table('country')->select('Code', 'Name')->first();
+//        $data = DB::table('country')->select('Code', 'Name')->orderBy('Code', 'desc')->first();
+//        $data = DB::table('city')->select('ID', 'Name')->find(2);
+//        $data = DB::table('city')->select('ID', 'Name')->where('id', 2)->get();
+//        $data = DB::table('city')->select('ID', 'Name')->where('id', '<=', 5)->get();
+        /*$data = DB::table('city')->select('ID', 'Name')->where([
+            ['id', '>', 1],
+            ['id', '<', 5],
+        ])->get();*/
+//        $data = DB::table('city')->where('id', '<', 5)->value('Name');
+        $data = DB::table('country')->limit(10)->pluck('Name', 'Code');
+        dd($data);
 
-//        DB::update("UPDATE posts SET created_at = ?, updated_at = ? WHERE created_at IS NULL OR updated_at IS NULL", [NOW(), NOW()]);
 
-//        DB::delete("DELETE FROM posts WHERE id = :id", ['id' => 4]);
-
-        DB::beginTransaction();
-        try {
-            DB::update("UPDATE posts SET created_at = ? WHERE created_at IS NULL", [NOW()]);
-            DB::update("UPDATE posts SET updated_at = ? WHERE updated_at IS NULL", [NOW()]);
-            DB::commit();
-        } catch (\Exception $e) {
-            DB::rollBack();
-            echo $e->getMessage();
-        }
-
-
-        $posts = DB::select("SELECT * FROM posts WHERE id > :id", ['id' => 2]);
-        return $posts;
-
-        /*dump($_ENV['MY_SETTING']);
-        dump(env('MY_SETTING'));
-        dump(config('app.timezone'));
-        dump(config('database.connections.mysql.database'));
-        dump($_ENV);*/
         return view('home', ['res' => 5, 'name' => 'John']);
     }
 
