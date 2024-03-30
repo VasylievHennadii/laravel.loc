@@ -22,7 +22,13 @@ class HomeController extends Controller
             ['id', '<', 5],
         ])->get();*/
 //        $data = DB::table('city')->where('id', '<', 5)->value('Name');
-        $data = DB::table('country')->limit(10)->pluck('Name', 'Code');
+//        $data = DB::table('country')->limit(10)->pluck('Name', 'Code');
+
+//        $data = DB::table('country')->count();
+//        $data = DB::table('country')->max('Population');
+//        $data = DB::table('country')->min('Population');
+//        $data = DB::table('country')->sum('Population');
+        $data = DB::table('country')->avg('Population');
         dd($data);
 
 
