@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -9,35 +10,11 @@ class HomeController extends Controller
 
     public function index()
     {
-//        $data = DB::table('country')->get();
-//        $data = DB::table('country')->limit(5)->get();
-//        $data = DB::table('country')->select('Code', 'Name')->limit(5)->get();
-//        $data = DB::table('country')->select('Code', 'Name')->first();
-//        $data = DB::table('country')->select('Code', 'Name')->orderBy('Code', 'desc')->first();
-//        $data = DB::table('city')->select('ID', 'Name')->find(2);
-//        $data = DB::table('city')->select('ID', 'Name')->where('id', 2)->get();
-//        $data = DB::table('city')->select('ID', 'Name')->where('id', '<=', 5)->get();
-        /*$data = DB::table('city')->select('ID', 'Name')->where([
-            ['id', '>', 1],
-            ['id', '<', 5],
-        ])->get();*/
-//        $data = DB::table('city')->where('id', '<', 5)->value('Name');
-//        $data = DB::table('country')->limit(10)->pluck('Name', 'Code');
 
-//        $data = DB::table('country')->count();
-//        $data = DB::table('country')->max('Population');
-//        $data = DB::table('country')->min('Population');
-//        $data = DB::table('country')->sum('Population');
-//        $data = DB::table('country')->avg('Population');
-
-//        $data = DB::table('city')->select('CountryCode')->distinct()->get();
-
-        $data = DB::table('city')->select('city.ID', 'city.Name as city_name', 'country.Code', 'country.Name as country_name')->limit(10)
-            ->join('country', 'city.CountryCode', '=', 'country.Code')
-            ->orderBy('city.ID')
-            ->get();
-        dd($data);
-
+        $post = new Post();
+        $post->title = 'Статья 2';
+//        $post->content = 'Lorem ipsum 1';
+        $post->save();
 
         return view('home', ['res' => 5, 'name' => 'John']);
     }
