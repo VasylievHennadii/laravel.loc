@@ -2,7 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class Post
+ * @package App
+ * @mixin Builder
+ */
 
 class Post extends Model
 {
@@ -21,8 +28,10 @@ class Post extends Model
 
 /* свойство для автоматического заполнения полей в таблице */
     protected $attributes = [
-        'content' => 'Lorem ipsum...',
+//        'content' => 'Lorem ipsum...',
 
     ];
+
+    protected $fillable = ['title', 'content'];
 
 }
