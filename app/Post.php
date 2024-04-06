@@ -27,11 +27,16 @@ class Post extends Model
 //    public $timestamps = false;
 
 /* свойство для автоматического заполнения полей в таблице */
-    protected $attributes = [
-//        'content' => 'Lorem ipsum...',
+    /*protected $attributes = [
+        'content' => 'Lorem ipsum...',
 
-    ];
+    ];*/
 
     protected $fillable = ['title', 'content'];
+
+    public function rubric()
+    {
+        return $this->belongsTo(Rubric::class);
+    }
 
 }
