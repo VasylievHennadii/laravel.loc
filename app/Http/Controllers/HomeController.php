@@ -22,8 +22,16 @@ class HomeController extends Controller
         dump($post->title, $post->rubric->title);*/
 
         /* получение поста для рубрики */
-        $rubric = Rubric::find(3);
-        dump($rubric->title, $rubric->post->title);
+//        $rubric = Rubric::find(3);
+//        dump($rubric->title, $rubric->post->title);
+
+        /* One To Many для rubric*/
+//        $rubric = Rubric::find(1);
+//        dump($rubric->posts);
+
+        /* One To Many для posts*/
+        $post = Post::find(1);
+        dump($post->title, $post->rubric->title);
 
 
         return view('home', ['res' => 5, 'name' => 'John']);

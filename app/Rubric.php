@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Rubric extends Model
 {
 
-    /*
-      $rubric = Rubric::find(1);
-      $rubric->post;
-     */
-    public function post()
+    /* One To One */
+//    public function post()
+//    {
+//        return $this->hasOne('App\Post');
+//    }
+
+    /* One To Many */
+    public function posts()
     {
-        return $this->hasOne('App\Post');
-//        return  $this->hasOne(Post::class);
+        return $this->hasMany('App\Post');
     }
+
+
 
 }
