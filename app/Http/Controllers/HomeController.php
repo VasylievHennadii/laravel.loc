@@ -30,8 +30,23 @@ class HomeController extends Controller
 //        dump($rubric->posts);
 
         /* One To Many для posts*/
-        $post = Post::find(1);
-        dump($post->title, $post->rubric->title);
+//        $post = Post::find(1);
+//        dump($post->title, $post->rubric->title);
+
+//        $posts = Rubric::find(1)->posts()->select('title')->where('id', '>', '2')->get();
+//        dump($posts);
+
+        /* ленивая загрузка - lazy loading - выполняется каждый sql-запрос в цикле */
+//        $posts = Post::where('id', '>', 1)->get();
+//        foreach ($posts as $post) {
+//            dump($post->title, $post->rubric->title);
+//        }
+
+        /* жадная загрузка - greedy loading */
+        $posts = Post::with('rubric')->where('id', '>', 1)->get();
+        foreach ($posts as $post) {
+            dump($post->title, $post->rubric->title);
+        }
 
 
         return view('home', ['res' => 5, 'name' => 'John']);
