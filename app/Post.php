@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+
 /* можно конкретизировать имя таблицы, с которой должна работать эта модель */
 //    protected $table = 'my_posts';
 
@@ -37,6 +38,11 @@ class Post extends Model
     public function rubric()
     {
         return $this->belongsTo(Rubric::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
 }

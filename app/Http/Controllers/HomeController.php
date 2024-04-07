@@ -6,6 +6,7 @@ use App\City;
 use App\Country;
 use App\Post;
 use App\Rubric;
+use App\Tag;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -43,10 +44,25 @@ class HomeController extends Controller
 //        }
 
         /* жадная загрузка - greedy loading */
-        $posts = Post::with('rubric')->where('id', '>', 1)->get();
-        foreach ($posts as $post) {
-            dump($post->title, $post->rubric->title);
+//        $posts = Post::with('rubric')->where('id', '>', 1)->get();
+//        foreach ($posts as $post) {
+//            dump($post->title, $post->rubric->title);
+//        }
+
+        /* Many to many : posts<->tags */
+//        $post = Post::find(2);
+//        dump($post->title);
+//        foreach ($post->tags as $tag) {
+//            dump($tag->title);
+//        }
+
+        /* Many to many : tags<->posts */
+        $tag = Tag::find(3);
+        dump($tag->title);
+        foreach ($tag->posts as $post) {
+            dump($post->title);
         }
+
 
 
         return view('home', ['res' => 5, 'name' => 'John']);
