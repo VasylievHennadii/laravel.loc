@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,26 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-
-/* можно конкретизировать имя таблицы, с которой должна работать эта модель */
-//    protected $table = 'my_posts';
-
-/* если нет поля id, указываем поле первичного ключа */
-//    protected $primaryKey = 'post_id';
-
-/* если поле не id (не числовое) и не автоинкрементируемое */
-//    public $incrementing = false;
-//    protected $keyType = 'string';
-
-/* если не нужно автозаполнение полей created_at updated_at, устанавливаем false */
-//    public $timestamps = false;
-
-/* свойство для автоматического заполнения полей в таблице */
-    /*protected $attributes = [
-        'content' => 'Lorem ipsum...',
-
-    ];*/
-
     protected $fillable = ['title', 'content'];
 
     public function rubric()
@@ -43,6 +24,15 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function getPostDate()
+    {
+//        $formatter = new \IntlDateFormatter('ru_RU', \IntlDateFormatter::FULL, \IntlDateFormatter::FULL);
+//        $formatter->setPattern('d MMM y');
+//        return $formatter->format(new \DateTime($this->created_at));
+
+        return Carbon::parse($this->created_at)->diffForHumans();
     }
 
 }

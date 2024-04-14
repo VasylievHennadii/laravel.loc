@@ -14,7 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
         $title = 'Home Page';
         return view('home', compact('title', 'posts'));
     }
