@@ -29,11 +29,13 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-        /*dump($request->input('title'));
-        dump($request->input('content'));
-        dd($request->input('rubric_id'));*/
+       $this->validate($request, [
+           'title' => 'required|min:5|max:100',
+           'content' => 'required',
+           'rubric_id' => 'integer',
+       ]);
 
-//        dd($request->all());
+
         Post::create($request->all());
         return redirect()->route('home');
     }
