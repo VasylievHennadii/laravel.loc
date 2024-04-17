@@ -54,6 +54,10 @@
 
 <main role="main">
 
+    <div class="container">
+        @include('layouts.errors')
+    </div>
+
    @yield('content')
 
 </main>

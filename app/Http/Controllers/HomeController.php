@@ -30,13 +30,13 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-       /*$this->validate($request, [
+       $this->validate($request, [
            'title' => 'required|min:5|max:100',
            'content' => 'required',
            'rubric_id' => 'integer',
-       ]);*/
+       ]);
 
-        $rules = [
+        /*$rules = [
             'title' => 'required|min:5|max:100',
             'content' => 'required',
             'rubric_id' => 'integer',
@@ -49,7 +49,7 @@ class HomeController extends Controller
             'rubric_id.integer' => 'Выберите рубрику',
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages)->validate();
+        $validator = Validator::make($request->all(), $rules, $messages)->validate();*/
 
 
         Post::create($request->all());
