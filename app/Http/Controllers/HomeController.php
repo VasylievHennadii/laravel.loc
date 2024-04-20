@@ -14,8 +14,40 @@ use Illuminate\Support\Facades\Validator;
 class HomeController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        /* запись в сессию */
+
+//        $request->session()->put('test', 'Test value');
+
+        /*session(['cart' =>[
+            ['id' => 1, 'title' => 'Product 1'],
+            ['id' => 2, 'title' => 'Product 2'],
+        ]]);*/
+
+        /* вызов элемента в сессии */
+
+//        dump(session('test'));
+
+//        dump(session('cart')[1]['title']);
+
+//        dump($request->session()->get('cart')[0]['title']);
+
+        /* добавление данных в сессию */
+//        $request->session()->push('cart', ['id' => 3, 'title' => 'Product 3']);
+
+        /* удаление элемента сессии*/
+//        dump($request->session()->pull('test'));
+
+//        $request->session()->forget('test');
+
+        /* полная очистка сессии */
+//        $request->session()->flush();
+
+
+//        dump($request->session()->all());
+        dump(session()->all());
+
         $posts = Post::orderBy('id', 'desc')->get();
         $title = 'Home Page';
         return view('home', compact('title', 'posts'));
