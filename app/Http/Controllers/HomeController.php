@@ -69,6 +69,7 @@ class HomeController extends Controller
        ]);
 
         Post::create($request->all());
+        $request->session()->flash('success', 'Данные сохранены!');
         return redirect()->route('home');
     }
 
