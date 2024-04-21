@@ -8,6 +8,7 @@ use App\Post;
 use App\Rubric;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,37 +17,16 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        /* запись в сессию */
+        /* создание куки */
+//        Cookie::queue('test', 'Test cookie', 5);
 
-//        $request->session()->put('test', 'Test value');
+        /* удаление куки */
+//        Cookie::queue(Cookie::forget('test'));
 
-        /*session(['cart' =>[
-            ['id' => 1, 'title' => 'Product 1'],
-            ['id' => 2, 'title' => 'Product 2'],
-        ]]);*/
+        /* получение и вывод куки */
+//        dump(Cookie::get('test'));
+//        dump($request->cookie('test'));
 
-        /* вызов элемента в сессии */
-
-//        dump(session('test'));
-
-//        dump(session('cart')[1]['title']);
-
-//        dump($request->session()->get('cart')[0]['title']);
-
-        /* добавление данных в сессию */
-//        $request->session()->push('cart', ['id' => 3, 'title' => 'Product 3']);
-
-        /* удаление элемента сессии*/
-//        dump($request->session()->pull('test'));
-
-//        $request->session()->forget('test');
-
-        /* полная очистка сессии */
-//        $request->session()->flush();
-
-
-//        dump($request->session()->all());
-        dump(session()->all());
 
         $posts = Post::orderBy('id', 'desc')->get();
         $title = 'Home Page';
