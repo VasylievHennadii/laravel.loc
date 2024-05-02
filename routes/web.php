@@ -20,6 +20,8 @@ Route::post('/', 'HomeController@store')->name('posts.store');
 
 Route::get('/page/about', 'PageController@show')->name('page.about');
 
+Route::get('/send', 'ContactController@send');
+
 
 
 /* redirecting a non-existent address to a specific page (instead of a 404 page) */
