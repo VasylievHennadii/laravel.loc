@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/create', 'HomeController@create')->name('posts.create');
 Route::post('/', 'HomeController@store')->name('posts.store');
@@ -23,6 +22,9 @@ Route::get('/page/about', 'PageController@show')->name('page.about');
 //Route::get('/send', 'ContactController@send');
 
 Route::match(['get', 'post'], '/send', 'ContactController@send');
+
+Route::get('/register', 'UserController@create')->name('register.create');
+Route::post('/register', 'UserController@store')->name('register.store');
 
 
 /* redirecting a non-existent address to a specific page (instead of a 404 page) */
