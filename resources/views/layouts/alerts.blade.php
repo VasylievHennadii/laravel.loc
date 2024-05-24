@@ -1,10 +1,17 @@
 <div class="mt-5">
 
-@if(session('success'))
+    @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
-@endif
+    @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
 
     @if ($errors->any())
         <div class="alert alert-danger">

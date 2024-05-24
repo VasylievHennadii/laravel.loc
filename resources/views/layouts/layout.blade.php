@@ -46,13 +46,25 @@
                     <strong>Album</strong>
                 </a>
 
-                <a href="{{ route('posts.create') }}">Create</a>
+{{--                @if(auth()->check())--}}
+{{--                    <a href="#">{{ auth()->user()->name }}</a>--}}
+{{--                    <a href="{{ route('logout') }}">Log out</a>--}}
+{{--                    <a href="{{ route('posts.create') }}">Create Post</a>--}}
+{{--                @else--}}
+{{--                    <a href="{{ route('register.create') }}">Registration</a>--}}
+{{--                    <a href="{{ route('login.create') }}">Login</a>--}}
+{{--                @endif--}}
 
-                <a href="{{ route('register.create') }}">Registration</a>
+                @auth()
+                    <a href="#">{{ auth()->user()->name }}</a>
+                    <a href="{{ route('logout') }}">Log out</a>
+                    <a href="{{ route('posts.create') }}">Create Post</a>
+                @endauth
 
-                @php
-                dump(auth()->check())
-                @endphp
+                @guest()
+                    <a href="{{ route('register.create') }}">Registration</a>
+                    <a href="{{ route('login.create') }}">Login</a>
+                @endguest
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
                         aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">

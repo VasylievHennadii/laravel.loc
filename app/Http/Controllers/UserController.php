@@ -32,7 +32,36 @@ class UserController extends Controller
         session()->flash('success', 'Successful registration');
         Auth::login($user);
         return redirect()->home();
+    }
 
+    public function loginForm()
+    {
+        return view('user.login');
+    }
+
+    public function login(Request $request)
+    {
+//        dd($request->all());
+
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            return redirect()->home();
+        }
+
+        return redirect()->back()->with('error', 'Incorrect login or password');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login.create');
     }
 
 }
