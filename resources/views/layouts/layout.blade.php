@@ -58,7 +58,7 @@
                 @auth()
                     <a href="#">{{ auth()->user()->name }}</a>
                     <a href="{{ route('logout') }}">Log out</a>
-                    <a href="{{ route('posts.create') }}">Create Post</a>
+{{--                    <a href="{{ route('posts.create') }}">Create Post</a>--}}
                 @endauth
 
                 @guest()

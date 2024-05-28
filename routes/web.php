@@ -30,6 +30,8 @@ Route::get('/login', 'UserController@loginForm')->name('login.create');
 Route::post('/login', 'UserController@login')->name('login');
 Route::get('/logout', 'UserController@logout')->name('logout');
 
+Route::get('/admin', 'Admin\MainController@index')->middleware('admin');
+
 
 
 /* redirecting a non-existent address to a specific page (instead of a 404 page) */
