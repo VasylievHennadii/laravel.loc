@@ -15,33 +15,8 @@ use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
-
     public function index(Request $request)
     {
-        /* создание куки */
-//        Cookie::queue('test', 'Test cookie', 5);
-
-        /* удаление куки */
-//        Cookie::queue(Cookie::forget('test'));
-
-        /* получение и вывод куки */
-//        dump(Cookie::get('test'));
-//        dump($request->cookie('test'));
-
-        /* запись в кэш */
-//        Cache::put('key', 'Value', 300);
-
-        /* удаление из кэша */
-//        dump(Cache::pull('key'));
-
-//        Cache::forget('key');
-
-        /* полная очистка кэша */
-//        Cache::flush();
-
-        /* получение из кэша */
-//        dump(Cache::get('key'));
-
         if(Cache::has('posts')) {
             $posts = Cache::get('posts');
         } else {
