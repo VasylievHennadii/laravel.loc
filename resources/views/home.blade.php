@@ -39,6 +39,11 @@
                         </div>
                     </div>
                 @endforeach
+
+                <div class="col-md-12">
+{{--                    {{ $posts->appends(['test' => request()->test])->links() }}--}}
+                    {{ $posts->onEachSide(2)->links('vendor.pagination.my-pagination') }}
+                </div>
             </div>
         </div>
     </div>

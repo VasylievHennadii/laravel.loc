@@ -17,13 +17,14 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        if(Cache::has('posts')) {
-            $posts = Cache::get('posts');
-        } else {
-            $posts = Post::orderBy('id', 'desc')->get();
-            Cache::put('posts', $posts);
-        }
+//        if(Cache::has('posts')) {
+//            $posts = Cache::get('posts');
+//        } else {
+//            $posts = Post::orderBy('id', 'desc')->get();
+//            Cache::put('posts', $posts);
+//        }
 
+        $posts = Post::orderBy('id', 'desc')->paginate(1);
         $title = 'Home Page';
         return view('home', compact('title', 'posts'));
     }
