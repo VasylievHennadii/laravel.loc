@@ -42,7 +42,7 @@
 
                 <div class="col-md-12">
 {{--                    {{ $posts->appends(['test' => request()->test])->links() }}--}}
-                    {{ $posts->onEachSide(2)->links('vendor.pagination.my-pagination') }}
+                    {{ $posts->onEachSide(3)->links() }}
                 </div>
             </div>
         </div>

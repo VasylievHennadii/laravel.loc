@@ -24,7 +24,7 @@ class HomeController extends Controller
 //            Cache::put('posts', $posts);
 //        }
 
-        $posts = Post::orderBy('id', 'desc')->paginate(1);
+        $posts = Post::orderBy('id', 'desc')->paginate(3);
         $title = 'Home Page';
         return view('home', compact('title', 'posts'));
     }
