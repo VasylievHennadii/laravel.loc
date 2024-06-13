@@ -32,7 +32,8 @@
                                     <small class="text-muted">
                                         {{-- $post->created_at --}}
                                         {{-- \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->format('d M Y') --}}
-                                        {{ $post->getPostDate() }}
+{{--                                        {{ $post->getPostDate() }}--}}
+                                        {{ $post->created_at->format('d.m.Y') }}
                                     </small>
                                 </div>
                             </div>
