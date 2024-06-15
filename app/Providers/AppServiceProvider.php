@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Rubric;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         DB::listen(function ($query) {
 //            dump($query->sql);
+//            Log::channel('sqllogs')->info($query->sql);
         });
 
         /* регистрация view composers*/
